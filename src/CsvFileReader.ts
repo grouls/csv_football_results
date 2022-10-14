@@ -1,9 +1,12 @@
 import fs from 'fs';
 
-export class CsvFileReader {
-  data: string[][] = [];
+// By convention, T is used as reference to Generic types
+export abstract class CsvFileReader<T> {
+  data: T[] = [];
 
   constructor(public filename: string) {}
+
+  abstract mapRow(row: string[]): T;
 
   read(): void {
     this.data = fs
@@ -11,6 +14,9 @@ export class CsvFileReader {
         encoding: 'utf-8',
       })
       .split('\n')
-      .map((row: string): string[] => row.split(','));
+      .map((row: string): string[] => {
+        return row.split(',');
+      })
+      .map(this.mapRow);
   }
 }
