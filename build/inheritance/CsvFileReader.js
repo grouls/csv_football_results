@@ -1,26 +1,19 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CsvFileReader = void 0;
-const fs_1 = __importDefault(require("fs"));
-// By convention, T is used as reference to Generic types
-class CsvFileReader {
-    constructor(filename) {
-        this.filename = filename;
-        this.data = [];
-    }
-    read() {
-        this.data = fs_1.default
-            .readFileSync(this.filename, {
-            encoding: 'utf-8',
-        })
-            .split('\n')
-            .map((row) => {
-            return row.split(',');
-        })
-            .map(this.mapRow);
-    }
-}
-exports.CsvFileReader = CsvFileReader;
+// import fs from 'fs';
+// // By convention, T is used as reference to Generic types
+// export abstract class CsvFileReader<T> {
+//   data: T[] = [];
+//   constructor(public filename: string) {}
+//   abstract mapRow(row: string[]): T;
+//   read(): void {
+//     this.data = fs
+//       .readFileSync(this.filename, {
+//         encoding: 'utf-8',
+//       })
+//       .split('\n')
+//       .map((row: string): string[] => {
+//         return row.split(',');
+//       })
+//       .map(this.mapRow);
+//   }
+// }

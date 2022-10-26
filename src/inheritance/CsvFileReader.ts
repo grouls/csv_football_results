@@ -1,22 +1,22 @@
-import fs from 'fs';
+// import fs from 'fs';
 
-// By convention, T is used as reference to Generic types
-export abstract class CsvFileReader<T> {
-  data: T[] = [];
+// // By convention, T is used as reference to Generic types
+// export abstract class CsvFileReader<T> {
+//   data: T[] = [];
 
-  constructor(public filename: string) {}
+//   constructor(public filename: string) {}
 
-  abstract mapRow(row: string[]): T;
+//   abstract mapRow(row: string[]): T;
 
-  read(): void {
-    this.data = fs
-      .readFileSync(this.filename, {
-        encoding: 'utf-8',
-      })
-      .split('\n')
-      .map((row: string): string[] => {
-        return row.split(',');
-      })
-      .map(this.mapRow);
-  }
-}
+//   read(): void {
+//     this.data = fs
+//       .readFileSync(this.filename, {
+//         encoding: 'utf-8',
+//       })
+//       .split('\n')
+//       .map((row: string): string[] => {
+//         return row.split(',');
+//       })
+//       .map(this.mapRow);
+//   }
+// }
